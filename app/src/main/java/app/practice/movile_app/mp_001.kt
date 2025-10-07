@@ -1,7 +1,5 @@
 package app.practice.movile_app
 
-import java.util.Objects
-
 /**
  * ========================
  * Tema: Aplicacion de reservas para un hotel

@@ -1,6 +1,5 @@
 package app.practice.movile_app
 
-
 fun main(){
     println("Introduce el primer valor")
     val value1: Int = readLine()?.toIntOrNull()?:0
