@@ -93,7 +93,7 @@ fun get_sorted_guests(): List<String> {
  */
 // Funcion simple sin parametros
 fun show_welcome() {
-    println("Bienvenido al hotel paraiso")
+    println("Bienvenido al hotel La Caldera")
 }
 
 // Funcion con parametros y retorno
