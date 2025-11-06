@@ -63,16 +63,23 @@ class _CounterPageState extends State<CounterPage> {
           children: [
             const Text('Has presionado:', style: TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
-            Text('$count', style: const TextStyle(fontSize: 56, fontWeight: FontWeight.w800)),
+            Text(
+              '$count',
+              style: const TextStyle(fontSize: 56, fontWeight: FontWeight.w800),
+            ),
             const SizedBox(height: 16),
             Card(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     FilledButton.tonal(
-                      onPressed: () => setState(() => count = (count - 1).clamp(0, 999999)),
+                      onPressed: () =>
+                          setState(() => count = (count - 1).clamp(0, 999999)),
                       child: const Text('-1'),
                     ),
                     const SizedBox(width: 12),
