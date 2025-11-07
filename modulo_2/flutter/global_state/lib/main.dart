@@ -1,32 +1,41 @@
 import 'package:flutter/material.dart';
-import 'core/theme/app_theme_dark_light.dart';
+import 'core/theme/app_theme.dart';
 import 'core/theme/theme_controller.dart';
+import 'core/state/app_state.dart';
 import 'router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final theme = ThemeController();
-  await theme.load(); // carga modo persistido
+  await theme.load();
 
-  final router = buildRouter(theme);
+  final app = AppState();
 
-  runApp(MyApp(theme: theme, routerConfig: router));
+  final router = buildRouter(app: app, theme: theme);
+
+  runApp(MyApp(theme: theme, app: app, routerConfig: router));
 }
 
 class MyApp extends StatelessWidget {
   final ThemeController theme;
+  final AppState app;
   final RouterConfig<Object> routerConfig;
-  const MyApp({super.key, required this.theme, required this.routerConfig});
+  const MyApp({
+    super.key,
+    required this.theme,
+    required this.app,
+    required this.routerConfig,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // AnimatedBuilder escucha al ChangeNotifier (theme) y recompone el árbol
+    // Redibuja cuando tema o app cambien
     return AnimatedBuilder(
-      animation: theme,
+      animation: Listenable.merge([theme, app]),
       builder: (context, _) {
         return MaterialApp.router(
-          title: 'Flutter — go_router + Tema',
+          title: 'Flutter — Shell + BottomNav',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
